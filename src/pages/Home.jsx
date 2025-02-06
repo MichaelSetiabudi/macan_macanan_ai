@@ -23,36 +23,41 @@ const Home = () => {
     navigate('/MainGame');
   };
 
+  const teamMembers = [
+    { name: 'Michael Setiabudi', id: '222117045' },
+    { name: 'Kenneth Elliot', id: '222117040' },
+    { name: 'Yosua Christian', id: '222117069' },
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 flex items-center justify-center p-4">
-      <div className="w-1/3 max-w-sm bg-white rounded-2xl shadow-2xl p-8 transform transition-transform hover:scale-105 mr-8">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 flex flex-col md:flex-row items-center justify-center p-4 gap-8">
+      {/* Team Info Card */}
+      <div className="w-full md:w-1/3 max-w-sm bg-white rounded-2xl shadow-2xl p-8 transform transition-transform hover:scale-105">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-amber-800 font-serif">Project AI</h2>
           <p className="mt-2 text-amber-600">Kelas B Tahun 2024-2025</p>
         </div>
-        <div className="text-center">
-          <p className="text-sm text-amber-700">
+        <div className="text-center space-y-2">
+          <p className="text-sm text-amber-700 font-semibold">
             Anggota Kelompok
           </p>
-          
-          <p className="text-sm text-amber-700">
-          - Michael Setiabudi - 222117045
-          </p>
-          <p className="text-sm text-amber-700">
-          - Kenneth Elliot - 222117040
-          </p>
-          <p className="text-sm text-amber-700">
-          - Yosua Christian - 222117069
-          </p>
+          {teamMembers.map((member, index) => (
+            <p key={index} className="text-sm text-amber-700">
+              - {member.name} - {member.id}
+            </p>
+          ))}
         </div>
       </div>
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-2xl p-8 transform transition-transform hover:scale-105">
+
+      {/* Player Selection Card */}
+      <div className="w-full md:w-2/5 max-w-md bg-white rounded-2xl shadow-2xl p-8 transform transition-transform hover:scale-105">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-amber-800 font-serif">Pick Your Side</h2>
           <p className="mt-2 text-amber-600">Choose your role in the game</p>
         </div>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {/* Tiger Button */}
           <button
             onClick={() => handlePlayerSelect("Tiger")}
             className="group relative overflow-hidden rounded-xl bg-amber-700 p-6 transition-all duration-300 hover:bg-amber-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
@@ -66,6 +71,7 @@ const Home = () => {
             <div className="absolute inset-0 z-0 bg-gradient-to-br from-amber-600 to-amber-800 opacity-0 transition-opacity group-hover:opacity-100"></div>
           </button>
 
+          {/* Villager Button */}
           <button
             onClick={() => handlePlayerSelect("Villager")}
             className="group relative overflow-hidden rounded-xl bg-emerald-700 p-6 transition-all duration-300 hover:bg-emerald-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
